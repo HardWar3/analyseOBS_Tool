@@ -1,0 +1,9 @@
+﻿<Application x:Class="analyseOBS_Tool.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:analyseOBS_Tool"
+             StartupUri="AnalyseTool.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
