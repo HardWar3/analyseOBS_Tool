@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:analyseOBS_Tool"
         mc:Ignorable="d"
-        Title="Analyzed" Height="700" Width="600"
-        MinHeight="700" MinWidth="600"
+        Title="Analyzed" Height="500" Width="650"
+        MinHeight="500" MinWidth="650"
         >
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,133 +18,7 @@
             <TextBlock x:Name="ram_textblock" Text="RAM: 90 %" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="50"/>
             <TextBlock x:Name="gpu_textblock" Text="GPU: 90 %" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="50"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" Margin="5">
-            <TextBlock Background="BlueViolet" Foreground="White" Height="Auto" Text="1080p 60fps" FontSize="38"/>
-            <StackPanel Margin="8">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                </Grid>
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <Label Content="Resolution: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="1920x1080"/>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <Label Content="Bitrate: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="6000kbps"/>
-                </StackPanel>
-                <StackPanel Grid.Row="2" Orientation="Horizontal">
-                    <Label Content="Rate Control: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="CBR"/>
-                </StackPanel>
-                <StackPanel Grid.Row="3" Orientation="Horizontal">
-                    <Label Content="Framerate: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="60 or 50 fps"/>
-                </StackPanel>
-                <StackPanel Grid.Row="4" Orientation="Horizontal">
-                    <Label Content="Keyframe Interval: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="2 seconds"/>
-                </StackPanel>
-                <StackPanel Grid.Row="5" Orientation="Horizontal">
-                    <Label Content="Preset: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="veryfast &lt;-> medium"/>
-                </StackPanel>
-                <StackPanel Grid.Row="6" Orientation="Horizontal">
-                    <Label Content="Profile: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="Profile: Main/High"/>
-                </StackPanel>
-            </StackPanel>
-            <TextBlock Background="BlueViolet" Foreground="White" Height="Auto" Text="1080p 30fps" FontSize="38"/>
-            <StackPanel Margin="8">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                </Grid>
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <Label Content="Resolution: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="1920x1080"/>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <Label Content="Bitrate: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="4500kbps"/>
-                </StackPanel>
-                <StackPanel Grid.Row="2" Orientation="Horizontal">
-                    <Label Content="Rate Control: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="CBR"/>
-                </StackPanel>
-                <StackPanel Grid.Row="3" Orientation="Horizontal">
-                    <Label Content="Framerate: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="25 or 30 fps"/>
-                </StackPanel>
-                <StackPanel Grid.Row="4" Orientation="Horizontal">
-                    <Label Content="Keyframe Interval: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="2 seconds"/>
-                </StackPanel>
-                <StackPanel Grid.Row="5" Orientation="Horizontal">
-                    <Label Content="Preset: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="veryfast &lt;-> medium"/>
-                </StackPanel>
-                <StackPanel Grid.Row="6" Orientation="Horizontal">
-                    <Label Content="Profile: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="Main/High"/>
-                </StackPanel>
-            </StackPanel>
-            <TextBlock Background="BlueViolet" Foreground="White" Height="Auto" Text="720p 60fps / 30fps" FontSize="38"/>
-            <StackPanel Margin="8">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                </Grid>
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <Label Content="Resolution: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="1280x720"/>
-                </StackPanel>
-                <StackPanel Grid.Row="1" Orientation="Horizontal">
-                    <Label Content="Bitrate: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="4500kbps / 3000kbps"/>
-                </StackPanel>
-                <StackPanel Grid.Row="2" Orientation="Horizontal">
-                    <Label Content="Rate Control: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="CBR"/>
-                </StackPanel>
-                <StackPanel Grid.Row="3" Orientation="Horizontal">
-                    <Label Content="Framerate: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="60 / 30 fps"/>
-                </StackPanel>
-                <StackPanel Grid.Row="4" Orientation="Horizontal">
-                    <Label Content="Keyframe Interval: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="2 seconds"/>
-                </StackPanel>
-                <StackPanel Grid.Row="5" Orientation="Horizontal">
-                    <Label Content="Preset: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="veryfast &lt;-> medium"/>
-                </StackPanel>
-                <StackPanel Grid.Row="6" Orientation="Horizontal">
-                    <Label Content="Profile: " FontWeight="Bold" FontSize="16" VerticalContentAlignment="Center" Padding="0"/>
-                    <TextBlock FontSize="16" Text="Main / High"/>
-                </StackPanel>
-            </StackPanel>
+        <StackPanel Name="broadcasting_specs" Grid.Column="1" Margin="5">
         </StackPanel>
     </Grid>
 </Window>
