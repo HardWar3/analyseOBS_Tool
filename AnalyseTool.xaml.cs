@@ -73,15 +73,12 @@ namespace analyseOBS_Tool
                 cpu.set_count_on_stop();
                 ram.set_count_on_stop();
                 gpu.set_count_on_stop();
-                Console.WriteLine("CPU AVG:  " + cpu.get_usage_average());
-                Console.WriteLine("RAM AVG:  " + ram.get_usage_average());
-                Console.WriteLine("GPU AVG:  " + gpu.get_usage_average());
 
                 //antwort fenster
                 Analyzed analyzed = new Analyzed();
-                analyzed.show_analyze(cpu.get_usage_average(),
-                                      ram.get_usage_average(),
-                                      gpu.get_usage_average());
+                analyzed.show_analyze(cpu.get_usage_average()
+                                     ,ram.get_usage_average()
+                                     ,gpu.get_usage_average());
             }
         }
     }

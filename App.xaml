@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:analyseOBS_Tool"
              StartupUri="AnalyseTool.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>

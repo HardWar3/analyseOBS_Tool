@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hardy_analyseOBS.classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,23 +27,46 @@ namespace analyseOBS_Tool
 
         public void show_analyze(int cpu_avg, int ram_avg, int gpu_avg)
         {
-            cpu_label.Content = String.Format("CPU: \n{0:00} %", cpu_avg);
-            ram_label.Content = String.Format("RAM: \n{0:00} %", ram_avg);
-            gpu_label.Content = String.Format("GPU: \n{0:00} %", gpu_avg);
+            cpu_textblock.Text = String.Format("CPU: {0:00} %", cpu_avg);
+            ram_textblock.Text = String.Format("RAM: {0:00} %", ram_avg);
+            gpu_textblock.Text = String.Format("GPU: {0:00} %", gpu_avg);
 
-            //if (cpu_avg < 40 && gpu_avg)
-            //{
+            cpu_textblock.Foreground = check_avg_value(cpu_avg);
+            ram_textblock.Foreground = check_avg_value(ram_avg);
+            gpu_textblock.Foreground = check_avg_value(gpu_avg);
 
-            //}
+            // green for good
+            // yellow for naja
+            // red for bad idea
+
+            // done
+            // green is between 0 and 50
+            // yellow is between 50 and 70
+            // red is between 70 and 100
+
+            // if cpu lower than gpu 
+            // cpu rendering recommended
+            // otherwise gpu rendering recommended
+
+            // ram alone check
 
             Show();
         }
 
-        public int cpu_gpu_analyse_result(int cpu_avg, int gpu_avg)
+        public Brush check_avg_value(int avg)
         {
-            // 10
-
-            return 0;
+            switch (avg)
+            {
+                case <= 50:
+                    return Brushes.Green;
+                case <= 70:
+                    return Brushes.Orange;
+                case < 100:
+                    return Brushes.Red;
+                default:
+                    break;
+            }
+            return Brushes.Pink;
         }
     }
 }

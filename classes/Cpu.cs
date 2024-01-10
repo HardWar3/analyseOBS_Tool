@@ -21,7 +21,7 @@ namespace hardy_analyseOBS.classes
         {
             float first_cpu_usage_value = usage.NextValue();
 
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
 
             return Convert.ToInt32(usage.NextValue());
         }
