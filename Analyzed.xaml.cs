@@ -40,11 +40,15 @@ namespace analyseOBS_Tool
             ram_textblock.Foreground = check_avg_value(ram_avg);
             gpu_textblock.Foreground = check_avg_value(gpu_avg);
 
-            // if cpu lower than gpu 
-            // cpu rendering recommended
-            // otherwise gpu rendering recommended
+            // es fehlt eine 3. empfehlung bei werten jeseits von gut und böse 90 cpu und gpu keine empfehlung auszusprechen
 
-            // ram alone check
+            if ((cpu_avg + 20) < 90 && (gpu_avg + 20) > 80 || cpu_avg < 40)
+            {
+                add_broadcasting_infos(0);
+            } else
+            {
+                add_broadcasting_infos(1);
+            }
 
             Show();
         }
@@ -89,7 +93,7 @@ namespace analyseOBS_Tool
                 head.FontSize = 38;
                 StackPanel specs_groupPanel = new StackPanel();
                 specs_groupPanel.Margin = new Thickness(8);
-                for (int j = 1; j < 7; j++)
+                for (int j = 1; j <= 7; j++)
                 {
                     StackPanel stackPanel = new StackPanel();
                     stackPanel.Orientation = Orientation.Horizontal;
@@ -112,7 +116,7 @@ namespace analyseOBS_Tool
                             break;
                         case 7:
                             textBlock.Text = twitch_broadcasting_specs[index,i,j];
-                            if (i == 0)
+                            if (index == 0)
                             {
                                 label.Content = "Profile: ";
                             }
