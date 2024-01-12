@@ -6,9 +6,13 @@
         xmlns:local="clr-namespace:analyseOBS_Tool"
         mc:Ignorable="d"
         Title="AnalyseTool" Height="350" Width="600"
-        ResizeMode="NoResize">
+        MinHeight="350" MinWidth="600">
     <Grid>
-        <StackPanel Margin="15,0,15,0" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="15,0,15,0" >
             <Label x:Name="cpu_usage_label" Content="CPU: CPU__usage" Height="25"/>
             <ProgressBar x:Name="cpu_usage_bar" Height="25" />
             <Label x:Name="ram_usage_label" Content="RAM: RAM__usage" Height="25"/>
@@ -16,6 +20,8 @@
             <Label x:Name="gpu_usage_label" Content="GPU: GPU__usage" Height="25"/>
             <ProgressBar x:Name="gpu_usage_bar" Height="25" />
         </StackPanel>
-        <Button x:Name="start_stop_button" Content="Start" FontSize="24" Background="DarkGreen" Width="150" Height="75" Margin="200,191,200,43" Click="start_stop_button_Click" />
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button x:Name="start_stop_button" Content="Start" FontSize="24" Background="DarkGreen" Width="150" Height="75" Click="start_stop_button_Click" />
+        </StackPanel>
     </Grid>
 </Window>

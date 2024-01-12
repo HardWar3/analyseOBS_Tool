@@ -20,11 +20,11 @@ namespace analyseOBS_Tool
     /// </summary>
     public partial class Analyzed : Window
     {
-        string[,,] twitch_broadcasting_specs = { { { "1080p 60fps / 30fps", "1920x1080", "6000kbps / 4500kbps", "CBR", "60 fps / 30 fps", "2 seconds", "veryfast <-> medium", "Main / High" },
-                                                   { "720p 60fps / 30fps", "1280x720", "4500kbps / 3000kbps", "CBR", "60 fps / 30 fps", "2 seconds", "very <-> medium", "Main / High" } },
-                                                 { { "1080p 60fps / 30fps", "1920x1080", "6000kbps / 4500kbps", "CBR", "60 fps / 30 fps", "2 seconds", "Quality", "2"},
-                                                   { "720p 60fps / 30fps", "1280x720", "4500kbps / 3000kbps", "CBR", "60 fps / 30 fps", "2 seconds", "Quality", "2"} } };
-        string[] label_names = { "", "Resolution: ", "Bitrate: ", "Rate Control: ", "Framerate: ", "Keyframe Interval: ", "Preset: "};
+        string[,,] twitch_broadcasting_specs = { { { "x264 (CPU)", "1080p 60fps / 30fps", "1920x1080", "6000kbps / 4500kbps", "CBR", "60 fps / 30 fps", "2 seconds", "veryfast <-> medium", "Main / High" },
+                                                   { "x264 (CPU)", "720p 60fps / 30fps", "1280x720", "4500kbps / 3000kbps", "CBR", "60 fps / 30 fps", "2 seconds", "very <-> medium", "Main / High" } },
+                                                 { { "NVENC/AMD H.264 (GPU)", "1080p 60fps / 30fps", "1920x1080", "6000kbps / 4500kbps", "CBR", "60 fps / 30 fps", "2 seconds", "Quality", "2"},
+                                                   { "NVENC/AMD H.264 (GPU)", "720p 60fps / 30fps", "1280x720", "4500kbps / 3000kbps", "CBR", "60 fps / 30 fps", "2 seconds", "Quality", "2"} } };
+        string[] label_names = { "Resolution: ", "Bitrate: ", "Rate Control: ", "Framerate: ", "Keyframe Interval: ", "Preset: "};
         public Analyzed()
         {
             InitializeComponent();
@@ -40,14 +40,20 @@ namespace analyseOBS_Tool
             ram_textblock.Foreground = check_avg_value(ram_avg);
             gpu_textblock.Foreground = check_avg_value(gpu_avg);
 
-            // es fehlt eine 3. empfehlung bei werten jeseits von gut und böse 90 cpu und gpu keine empfehlung auszusprechen
-
-            if ((cpu_avg + 20) < 90 && (gpu_avg + 20) > 80 || cpu_avg < 40)
+            switch (gpu_avg)
             {
-                add_broadcasting_infos(0);
-            } else
-            {
-                add_broadcasting_infos(1);
+                case < 80:
+                    add_broadcasting_infos(1);
+                    break;
+                case > 80:
+                    if (cpu_avg + 20 < 85)
+                    {
+                        add_broadcasting_infos(0);
+                    }
+                    add_broadcasting_infos(1);
+                    break;
+                default:
+                    break;
             }
 
             Show();
@@ -59,14 +65,11 @@ namespace analyseOBS_Tool
             {
                 case <= 50:
                     return Brushes.Green;
-                case <= 70:
+                case <= 80:
                     return Brushes.Orange;
-                case < 100:
-                    return Brushes.Red;
                 default:
-                    break;
+                    return Brushes.Red;
             }
-            return Brushes.Pink;
         }
 
         public void add_broadcasting_infos(int cpu_0_gpu_1)
@@ -83,17 +86,22 @@ namespace analyseOBS_Tool
                 default:
                     return;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < twitch_broadcasting_specs.GetLength(1); i++)
             {
+                TextBlock encoderHead = new TextBlock();
+                encoderHead.Background = Brushes.BlueViolet;
+                encoderHead.Foreground = Brushes.White;
+                encoderHead.Text = twitch_broadcasting_specs[index, i, 0];
+                encoderHead.FontSize = 28;
 
                 TextBlock head = new TextBlock();
                 head.Background = Brushes.BlueViolet;
                 head.Foreground = Brushes.White;
-                head.Text = twitch_broadcasting_specs[index,i,0];
+                head.Text = twitch_broadcasting_specs[index, i, 1];
                 head.FontSize = 38;
                 StackPanel specs_groupPanel = new StackPanel();
                 specs_groupPanel.Margin = new Thickness(8);
-                for (int j = 1; j <= 7; j++)
+                for (int j = 2; j < twitch_broadcasting_specs.GetLength(2); j++)
                 {
                     StackPanel stackPanel = new StackPanel();
                     stackPanel.Orientation = Orientation.Horizontal;
@@ -110,11 +118,11 @@ namespace analyseOBS_Tool
 
                     switch (j)
                     {
-                        case <= 6:
-                            label.Content = label_names[j];
+                        case <= 7:
+                            label.Content = label_names[j - 2];
                             textBlock.Text = twitch_broadcasting_specs[index,i,j];
                             break;
-                        case 7:
+                        case 8:
                             textBlock.Text = twitch_broadcasting_specs[index,i,j];
                             if (index == 0)
                             {
@@ -133,6 +141,7 @@ namespace analyseOBS_Tool
                     stackPanel.Children.Add(textBlock);
                 }
 
+                broadcasting_specs.Children.Add(encoderHead);
                 broadcasting_specs.Children.Add(head);
                 broadcasting_specs.Children.Add(specs_groupPanel);
             }

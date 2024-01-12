@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:analyseOBS_Tool"
         mc:Ignorable="d"
-        Title="Analyzed" Height="500" Width="650"
-        MinHeight="500" MinWidth="650"
+        Title="Analyzed" Height="550" Width="650"
+        MinHeight="550" MinWidth="650"
         >
     <Grid>
         <Grid.ColumnDefinitions>
