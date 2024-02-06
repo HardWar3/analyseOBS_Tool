@@ -36,7 +36,7 @@ namespace hardy_analyseOBS.classes
             foreach (ManagementObject item in _information.Get())
             {
                 // wert kann nicht null sein nicht in diesem Fall
-                name = item["name"].ToString();
+                name = item["name"].ToString()!;
             }
 
             return name;

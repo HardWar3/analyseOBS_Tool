@@ -53,9 +53,7 @@ namespace hardy_analyseOBS.classes
         {
             float first_ram_usage_value = usage.NextValue();
 
-            double ram_available = Convert.ToUInt32(usage.NextValue()) / 1000.0; // 1000.0 führt zur korrekten kommerstelle
-
-            ram_available = Math.Round(ram_available / 1.074, 2); // Gigabyte zu Gibibyte Umrechnung
+            double ram_available = usage.NextValue() / 1024; // führt zur korrekten Berechnung (MB to GB(Gibibyte))
 
             return Convert.ToInt32(ram_available);
         }
@@ -76,10 +74,8 @@ namespace hardy_analyseOBS.classes
 
             foreach (ManagementObject item in _information.Get())
             {
-                total += Convert.ToDouble(item["Capacity"]) / 1000000000; // 1000000000 führt zur korrekten kommerstelle
+                total += Convert.ToDouble(item["Capacity"]) / Math.Pow(1024,3); // führt zur korrekten Berechnung (byte to Gibibyte)
             }
-
-            total = Convert.ToInt32(Math.Round(total / 1.074,2));
 
             return total;
         }
@@ -91,7 +87,7 @@ namespace hardy_analyseOBS.classes
             foreach (ManagementObject item in _information.Get())
             {
                 // wert kann nicht null sein in diesem Fall
-                name = item["ManuFacturer"].ToString();
+                name = item["ManuFacturer"].ToString()!;
             }
 
             return name;

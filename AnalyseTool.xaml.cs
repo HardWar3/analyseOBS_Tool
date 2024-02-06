@@ -48,7 +48,7 @@ namespace analyseOBS_Tool
         }
 
         public void all_add_peak()
-        {
+        {      
             cpu.add_peak();
             ram.add_peak();
             gpu.add_peak();
